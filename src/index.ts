@@ -117,3 +117,64 @@ class Student extends Person {
 const s1 = new Student('小米',29,3);
 s1.speak()
 s1.study()
+//类属性的简写形式
+class Teacher  {
+    constructor(public name : string,public age : number,public grade : number) {
+    }
+}
+let t1= new Teacher("了",82,3)
+console.log(t1.age)
+console.log(t1.grade)
+console.log(t1.name)
+
+
+abstract class Package{
+    constructor(public name : string,public number : number) {}
+    abstract calculate():number
+    public getInfo(){
+        return `${this.name} 运了 ${this.number} 个`
+    }
+}
+class Apple extends Package {
+    constructor(public name : string,public number : number , public uniPrice : number) {
+        super(name, number);
+    }
+    calculate() {
+        return this.uniPrice * this.number;
+    }
+}
+let apple = new Apple("苹果",3,10);
+console.log(apple.getInfo(),`花了`,apple.calculate());
+
+interface PersonInterface{
+    name : string,
+    age : number,
+    speak():void
+}
+class LiMing implements PersonInterface{
+    constructor(public name : string,public age : number) {
+    }
+    speak() {
+        for (let i = 0; i < this.age; i++) {
+            console.log(`${this.name} ${this.age}岁了`);
+        }
+    }
+}
+let liMing = new LiMing('黎明',6)
+liMing.speak()
+
+function Data<T>(data1:T):T{
+    return data1;
+}
+console.log(Data<number>(22))
+function Data2<T,U>(data1:T,data2:U):T|U{
+    return Date.now()%2 ? data1 : data2;
+}
+console.log(`现在时间是`,Date.now(),Data2<string,string>('奇数时间','偶数时间'))
+
+let num1= 40
+let num2= 3
+console.log(num1%2)
+console.log(num2%2)
+console.log(num1%2? "1" : '0')
+console.log(num2%2? "1":"0")
