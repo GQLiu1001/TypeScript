@@ -178,3 +178,5 @@ console.log(num1%2)
 console.log(num2%2)
 console.log(num1%2? "1" : '0')
 console.log(num2%2? "1":"0")
+
+
